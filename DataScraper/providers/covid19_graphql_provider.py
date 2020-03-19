@@ -34,7 +34,7 @@ class Covid19GraphqlProvider(Provider):
         if "errors" in data:
             return {"error": "encountered error while fetching external api data", "code": HTTPStatus.BAD_GATEWAY, "data": data['errors']}
 
-        result = {
+        results = {
             "country": country,
             "code": country_code
         }
@@ -60,8 +60,8 @@ class Covid19GraphqlProvider(Provider):
                 "total_recovered": total_recovered,
                 "total_deaths": total_deaths
             })
-        result['timeline'] = timeline
-        return result
+        results['timeline'] = timeline
+        return results
 
 
 
