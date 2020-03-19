@@ -10,7 +10,9 @@ class TimelineBloc extends Bloc<TimelineEvent, TimelineState> {
 
   @override
   Stream<TimelineState> mapEventToState(TimelineEvent event) async* {
-    
+    if (event is TimelineInitialize) {
+      yield TimelineLoading();
+    }
   }
 
 

@@ -17,6 +17,7 @@ dependencies:
   meta: ^1.1.6
   intl: ^0.16.0
   dio: ^3.0.8
+  google_fonts: ^0.3.10
 
 dev_dependencies:
   flutter_test:
@@ -26,7 +27,9 @@ dev_dependencies:
 
 
 flutter:
-
+  assets:
+    - assets/
+    - google_fonts/
 
   # the material Icons class.
   uses-material-design: true

@@ -3,7 +3,7 @@
 import 'package:coronavirus_visualizer/src/bloc/timeline_bloc/bloc.dart';
 import 'package:coronavirus_visualizer/src/ui/country_timeline_screen.dart';
 import 'package:coronavirus_visualizer/src/ui/global_timeline_sceen.dart';
-import 'package:coronavirus_visualizer/src/ui/splash_screen.dart';
+import 'package:coronavirus_visualizer/src/ui/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

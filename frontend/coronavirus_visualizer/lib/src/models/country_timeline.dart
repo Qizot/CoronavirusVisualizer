@@ -1,4 +1,5 @@
-import 'package:coronavirus_visualizer/models/timeline_item.dart';
+
+import 'package:coronavirus_visualizer/src/models/timeline_item.dart';
 
 class CountryTimeline {
   String country;
