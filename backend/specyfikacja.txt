@@ -1,0 +1,30 @@
+Baza danych powinna przechowywać jedną kolekcję 'timelines'
+
+pojedyńczy rekord powinien mieć poniższy format:
+
+{
+  "country": "full country name",
+  "code": "country code, e.g. for Poland it's PL",
+  "timeline": [
+    {
+      "date": "date type",
+      "new_cases": "integer type",
+      "new_deaths": "integer type",
+      "total_cases": "integer type",
+      "total_recovered": "integer type",
+      "total_deaths": "integer type",
+    }
+  ]
+}
+
+Backend powinien posiadać jeden endpoint '/api/timelines'
+endpoint powinien móc przyjmować następujące parametry (takie parametry po znaku '?'):
+ - countries - powinna to być lista kodów krajów rozdzielona przecinkiem albo po prostu opcja 'all' oznacza to wtedy, że rządamy wszystkich krajów
+ - dateFrom - data rozpoczęcia
+ - dateTo - data końca
+
+ jeśli nie zostało podane 'dateFrom' oznacza to że pytamy o czas od początku świata
+ analogicznie jeśli nie zostało podane 'dateTo' ostacza to że pytamy o czas do końca świata
+
+Drugim endpointem powinno być '/api/summary/{country code}'
+powinien on zwracać dla podanego kraju podsumowanie (czyli najnowszy wpis z kolekcji timeline dla danego kraju)
