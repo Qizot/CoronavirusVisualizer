@@ -77,3 +77,36 @@ export const getTimelines = async (req: Request, res: Response) => {
         });
     }
 }
+
+
+export const getGlobalTimeline = async (req: Request, res: Response) => {
+    VirusTimelineSchema.aggregate([
+        {$unwind: "$timeline"},
+        {$group: {
+          "_id": "$timeline.date",
+          "new_cases": {$sum: "$timeline.new_cases"},
+          "new_deaths": {$sum: "$timeline.new_deaths"},
+          "total_cases": {$sum: "$timeline.total_cases"},
+          "total_deaths": {$sum: "$timeline.total_deaths"},
+          "total_recovered": {$sum: "$timeline.total_recovered"},
+        }},
+        {$project: {
+          _id: 1,
+          "date": "$_id",
+          "new_cases": 1,
+          "new_deaths": 1,
+          "total_cases": 1,
+          "total_deaths": 1,
+          "total_recovered": 1,
+        }},
+        {$sort: {"_id": 1}}
+      ]).exec((err, timeline) => {
+        if (err) {
+            return res.status(500).json({
+                error: err,
+                code: 500
+            });
+        }
+        return res.json(timeline);
+      });
+}
