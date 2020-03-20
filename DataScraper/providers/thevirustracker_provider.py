@@ -14,7 +14,7 @@ class TheVirusTrackerProvider(Provider):
         try:
             result = {}
             req = requests.get(TheVirusTrackerProvider.COUNTRY_TIMELINE_URL.format(country_code),
-                               timeout=TheVirusTrackerProvider.DEFAULT_TIMEOUT)
+                               timeout=TheVirusTrackerProvider.DEFAULT_TIMEOUT, headers={'Accept-Encoding': 'identity'})
             data = json.loads(req.text)
             info = data['countrytimelinedata'][0]['info']
             result['country'] = info['title']
