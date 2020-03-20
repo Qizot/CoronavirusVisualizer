@@ -110,3 +110,29 @@ export const getGlobalTimeline = async (req: Request, res: Response) => {
         return res.json(timeline);
       });
 }
+
+export const getCountrySummary = async (req: Request, res: Response) => {
+    const countryCode = req.params.countryCode;
+
+    VirusTimelineSchema.aggregate([
+        {$match: { code: countryCode }},
+        {$sort: {"timeline.date": 1}},
+        {$unwind: "$timeline"},
+        {$group: {
+          _id: "$country", 
+          "date": {$last: "$timeline.date"},
+          "total_cases": {$last: "$timeline.total_cases"},
+          "total_deaths": {$last: "$timeline.totaldeaths"},
+          "total_recovered": {$last: "$timeline.total_recovered"},
+        }}
+    ]).exec((err, timeline) => {
+        if (err) {
+            return res.status(500).json({
+                error: err,
+                code: 500
+            });
+        }
+        return res.json(timeline);
+      });
+    
+}
