@@ -1,6 +1,8 @@
 
 
 
+import 'package:coronavirus_visualizer/src/ui/splash/mysterious_image_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class AnimatedVirus extends StatefulWidget {
@@ -68,7 +70,12 @@ class _AnimatedVirusState extends State<AnimatedVirus> with TickerProviderStateM
         Positioned(
           top: _baseVirusOffset.dy + _thirdVirus.value,
           right: 50,
-          child: Image.asset("assets/red_virus.png", height: _imageSize.dy, width: _imageSize.dx)
+          child: GestureDetector(
+            onDoubleTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => MysteriousImageScreen()));
+            },
+            child: Image.asset("assets/red_virus.png", height: _imageSize.dy, width: _imageSize.dx)
+          )
         ),
       ],
     );

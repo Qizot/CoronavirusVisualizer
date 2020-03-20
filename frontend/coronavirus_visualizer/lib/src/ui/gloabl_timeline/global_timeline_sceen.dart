@@ -5,6 +5,7 @@ import 'package:coronavirus_visualizer/src/bloc/timeline_bloc/bloc.dart';
 import 'package:coronavirus_visualizer/src/models/global_timeline.dart';
 import 'package:coronavirus_visualizer/src/ui/charts/total_timeline_chart.dart';
 import 'package:coronavirus_visualizer/src/ui/charts/total_timeline_circle_chart.dart';
+import 'package:coronavirus_visualizer/src/ui/splash/error_screen.dart';
 import 'package:coronavirus_visualizer/src/ui/splash/loading_screen.dart';
 import 'package:coronavirus_visualizer/src/ui/total_timeline/total_timeline_chart_card.dart';
 import 'package:coronavirus_visualizer/src/ui/total_timeline/total_timeline_circle_chart_card.dart';
@@ -48,6 +49,9 @@ class _GlobalTimelineScreenState extends State<GlobalTimelineScreen> {
             }
             if (state is TimelineFetchedGlobalTimeline) {
               return _totalTimeline(state.globalTimeline);
+            }
+            if (state is TimelineError) {
+              return ErrorScreen(error: state.error);
             }
             return Container();
           }

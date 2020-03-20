@@ -38,7 +38,6 @@ class TotalTimelineChart extends StatelessWidget {
     ];
   }
 
-
   _onSelectionChanged(BuildContext context) {
     return (charts.SelectionModel<DateTime> model) {
       final selectedDatum = model.selectedDatum;

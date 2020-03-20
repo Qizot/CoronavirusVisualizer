@@ -3,6 +3,7 @@
 
 
 import 'package:coronavirus_visualizer/src/bloc/timeline_bloc/bloc.dart';
+import 'package:coronavirus_visualizer/src/ui/splash/error_screen.dart';
 import 'package:coronavirus_visualizer/src/ui/splash/loading_screen.dart';
 import 'package:coronavirus_visualizer/src/ui/total_timeline/total_timeline_chart_card.dart';
 import 'package:coronavirus_visualizer/src/ui/total_timeline/total_timeline_circle_chart_card.dart';
@@ -44,6 +45,9 @@ class _CountryTimelineScreenState extends State<CountryTimelineScreen> {
           builder: (context, state) {
             if (state is TimelineLoading) {
               return LoadingScreen(title: "Loading timeline...");
+            }
+            if (state is TimelineError) {
+              return ErrorScreen(error: state.error);
             }
             if (state is TimelineFetchedCountryTimeline) {
               return ListView(
