@@ -32,6 +32,10 @@ flutter_icons:
   ios: true
   image_path: "assets/thug_virus.png"
 
+flutter_native_splash:
+  image: assets/splash.png
+  color: "000000"
+
 flutter:
   assets:
     - assets/
