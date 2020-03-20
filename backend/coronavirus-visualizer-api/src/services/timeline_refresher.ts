@@ -71,8 +71,8 @@ export const refreshTimelinesJob = async () => {
 
                 } else {
                     const newTimeline = new VirusTimelineSchema({
-                        country: countries[key],
-                        code: key,
+                        country: key,
+                        code: countries[key],
                         timeline: body['timeline']
                     });
                     await newTimeline.save();
