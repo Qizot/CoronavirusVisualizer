@@ -2,6 +2,8 @@ import express from 'express';
 import { PORT } from './config/constants';
 import indexRouter from "./routes/index";
 import mongoose from 'mongoose';
+import {CronJob} from "cron";
+import { refreshTimelinesJob } from './services/timeline_refresher';
 
 const app = express();
 app.use(express.json());
@@ -22,6 +24,13 @@ mongoose.connect(mongoUri, {
     console.log("Connected to MongoDb");
   }
 });
+
+// run cron job every full hour - refreshing timelines
+const job = new CronJob("0 * * * *", () => {
+    refreshTimelinesJob();
+});
+
+job.start();
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);

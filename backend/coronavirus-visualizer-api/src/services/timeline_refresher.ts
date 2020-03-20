@@ -54,10 +54,11 @@ const countries: {[key: string]: any} = {
 }
 
 export const refreshTimelinesJob = async () => {
+    console.log("Refreshing timelines...")
     const APIS = ["thevirustracker", "graphql"];
 
     for (let key in countries) {
-        for (let api in APIS) {
+        for (let api of APIS) {
             const url = `http://127.0.0.1:5000/api/timelines/${countries[key]}?api=${api}`;
             try {
                 const response = await fetch(url);
@@ -85,4 +86,5 @@ export const refreshTimelinesJob = async () => {
 
         }
     }
+    console.log("Finished refreshing...");
 }
