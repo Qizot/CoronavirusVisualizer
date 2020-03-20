@@ -30,7 +30,7 @@ class _GlobalTimelineScreenState extends State<GlobalTimelineScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appTitle != null ? AppBar(
-        title: Text(appTitle, style: GoogleFonts.baloo(fontSize: 20)),
+        title: Text(appTitle, style: TextStyle(fontFamily: "Baloo", fontSize: 20)),
         centerTitle: true,
       ): null,
       body: BlocListener<TimelineBloc, TimelineState>(

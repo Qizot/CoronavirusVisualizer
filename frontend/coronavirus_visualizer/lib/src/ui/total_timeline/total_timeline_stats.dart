@@ -43,7 +43,7 @@ class TotalTimelineStats extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Text("Most recent statistics", style: GoogleFonts.baloo(fontSize: 30, color: Colors.white, fontWeight: FontWeight.w600)),
+          Text("Most recent statistics", style: TextStyle(fontFamily: "Baloo", fontSize: 30, color: Colors.white, fontWeight: FontWeight.w600)),
           SizedBox(height: 15),
           GridView.count(
             physics: ScrollPhysics(),
@@ -68,9 +68,9 @@ class TotalTimelineStats extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Text(text, style: GoogleFonts.baloo(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w500)),
+          Text(text, style: TextStyle(fontFamily: "Baloo", fontSize: 20, color: Colors.white, fontWeight: FontWeight.w500)),
           SizedBox(height: 10),
-          Text(amount.toString(), style:GoogleFonts.baloo(fontSize: 25, color: Colors.white, fontWeight: FontWeight.w700))
+          Text(amount.toString(), style: TextStyle(fontFamily: "Baloo", fontSize: 25, color: Colors.white, fontWeight: FontWeight.w700))
         ],
       ),
     );

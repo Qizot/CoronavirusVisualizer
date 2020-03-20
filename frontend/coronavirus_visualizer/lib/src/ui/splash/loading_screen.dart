@@ -33,7 +33,7 @@ class LoadingScreen extends StatelessWidget {
             bottom: 120,
             left: 60,
             right: 60,
-            child: Text(title, style: GoogleFonts.baloo(color: Colors.white, fontSize: 25), textAlign: TextAlign.center,)
+            child: Text(title, style: TextStyle(fontFamily: "Baloo", color: Colors.white, fontSize: 25), textAlign: TextAlign.center,)
           )
         ],
       )

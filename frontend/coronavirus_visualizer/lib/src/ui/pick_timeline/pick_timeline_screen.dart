@@ -64,7 +64,7 @@ class PickTimelineScreen extends StatelessWidget {
           children: <Widget>[
             Image.asset(imageName, width: 150, height: 150),
             SizedBox(height: 10),
-            Text(title, style: GoogleFonts.baloo(fontSize: 25, fontWeight: FontWeight.w600, color: Colors.white), textAlign: TextAlign.center)
+            Text(title, style: TextStyle(fontFamily: "Baloo", fontSize: 25, fontWeight: FontWeight.w600, color: Colors.white), textAlign: TextAlign.center)
           ],
         )
       ),

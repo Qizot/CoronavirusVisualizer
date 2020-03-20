@@ -29,7 +29,7 @@ class _CountryTimelineScreenState extends State<CountryTimelineScreen> {
       key: _scaffoldKey,
       appBar: appTitle != null ?
       AppBar(
-        title: Text(appTitle, style: GoogleFonts.baloo(fontSize: 25)),
+        title: Text(appTitle, style: TextStyle(fontFamily: "Baloo", fontSize: 25)),
         centerTitle: true,
       ) : null,
       body: BlocListener<TimelineBloc, TimelineState>(

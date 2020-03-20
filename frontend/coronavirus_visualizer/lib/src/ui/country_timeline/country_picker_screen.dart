@@ -14,7 +14,7 @@ class CountryPickerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pick country", style: GoogleFonts.baloo(fontSize: 25, fontWeight: FontWeight.w600)),
+        title: Text("Pick country", style: TextStyle(fontFamily: "Baloo", fontSize: 25, fontWeight: FontWeight.w600)),
         centerTitle: true,
       ),
       body: Container(
@@ -42,7 +42,7 @@ class CountryPickerScreen extends StatelessWidget {
             return ListTile(
               title: Row(
                 children: <Widget>[
-                  Text(countries[idx].name, style: GoogleFonts.baloo(fontSize: 15, color: Colors.white, fontWeight: FontWeight.w500)),
+                  Text(countries[idx].name, style: TextStyle(fontFamily: "Baloo", fontSize: 15, color: Colors.white, fontWeight: FontWeight.w500)),
                   SizedBox(width: 6),
                   Text(_countryEmoji(countries[idx].code), style: TextStyle(fontSize: 20))
                 ],
