@@ -8,6 +8,10 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoadingScreen extends StatelessWidget {
+  final String title;
+
+  LoadingScreen({@required this.title});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +33,7 @@ class LoadingScreen extends StatelessWidget {
             bottom: 120,
             left: 60,
             right: 60,
-            child: Text("Timeline is loading...", style: GoogleFonts.baloo(color: Colors.white, fontSize: 25), textAlign: TextAlign.center,)
+            child: Text(title, style: GoogleFonts.baloo(color: Colors.white, fontSize: 25), textAlign: TextAlign.center,)
           )
         ],
       )

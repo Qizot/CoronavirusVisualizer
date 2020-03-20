@@ -12,14 +12,13 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      body: BlocBuilder<TimelineBloc, TimelineState>(
-        builder: (context, state) {
-
-          if (state is TimelineLoading) {
-            return LoadingScreen();
+      body: BlocListener<TimelineBloc, TimelineState>(
+        listener: (context, state) {
+          if (state is TimelineInitialized) {
+            Navigator.of(context).pushReplacementNamed("/timeline-picker");
           }
-          return Center(child: Text("To be done soon"));
-        }
+        },
+        child: LoadingScreen(title: "Preparing virus data...")
       )
 
     );

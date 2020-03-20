@@ -54,11 +54,11 @@ class MockTimelineProvider extends TimelineProvider {
 
     for (int i = 0; i < days; i++) {
       date = date.add(Duration(days: 1));
-      newCases += rand.nextInt(100);
-      newDeaths += rand.nextInt(20);
+      newCases = rand.nextInt(100);
+      newDeaths = rand.nextInt(20);
       totalCases += newCases;
       totalDeaths += newDeaths;
-      totalRecovered += rand.nextInt(15);
+      totalRecovered += rand.nextInt(20);
       items.add(TimelineItem(date: date, newCases: newCases, newDeaths: newDeaths, totalCases: totalCases, totalDeaths: totalDeaths, totalRecovered: totalRecovered));
     }
     return items;
