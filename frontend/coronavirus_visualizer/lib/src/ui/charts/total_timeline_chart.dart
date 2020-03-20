@@ -1,5 +1,6 @@
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:coronavirus_visualizer/src/models/timeline_item.dart';
+import 'package:coronavirus_visualizer/src/ui/charts/total_timeline_details_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -38,6 +39,21 @@ class TotalTimelineChart extends StatelessWidget {
   }
 
 
+  _onSelectionChanged(BuildContext context) {
+    return (charts.SelectionModel<DateTime> model) {
+      final selectedDatum = model.selectedDatum;
+
+      if (selectedDatum.isNotEmpty) {
+        final item = model.selectedDatum.first.datum as TimelineItem;
+        showDialog(context: context, builder: (context) {
+          return TotalTimelineDetailsDialog(timelineItem: item);
+        });
+
+      }
+    };
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return charts.TimeSeriesChart(
@@ -53,6 +69,12 @@ class TotalTimelineChart extends StatelessWidget {
         charts.PointRendererConfig(
             // ID used to link series to this renderer.
             customRendererId: 'customPoint')
+      ],
+      selectionModels: [
+        charts.SelectionModelConfig(
+          type: charts.SelectionModelType.info,
+          changedListener: _onSelectionChanged(context),
+        )
       ],
       // Optionally pass in a [DateTimeFactory] used by the chart. The factory
       // should create the same type of [DateTime] as the data provided. If none
