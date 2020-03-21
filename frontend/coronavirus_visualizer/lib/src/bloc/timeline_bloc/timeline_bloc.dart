@@ -15,7 +15,7 @@ class TimelineBloc extends Bloc<TimelineEvent, TimelineState> {
   Stream<TimelineState> mapEventToState(TimelineEvent event) async* {
     if (event is TimelineInitialize) {
       yield TimelineLoading();
-      await Future.delayed(Duration(seconds: 3));
+      await Future.delayed(Duration(seconds: 2));
       yield TimelineInitialized();
     }
     if (event is TimelineFetchTimeline) {
@@ -34,7 +34,7 @@ class TimelineBloc extends Bloc<TimelineEvent, TimelineState> {
     }
     if (event is TimelineFetchCountryTimeline) {
       yield TimelineLoading();
-      final showLoadingScreen = Future.delayed(Duration(seconds: 3));
+      final showLoadingScreen = Future.delayed(Duration(seconds: 2));
 
       try {
         final countryTimeline = await _repository.getCountryTimeline(event.countryCode);

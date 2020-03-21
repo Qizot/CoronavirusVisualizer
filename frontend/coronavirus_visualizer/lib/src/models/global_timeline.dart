@@ -6,11 +6,11 @@ class GlobalTimeline {
 
   GlobalTimeline({this.timeline});
 
-  GlobalTimeline.fromJson(Map<String, dynamic> json) {
+  GlobalTimeline.fromJson(List<dynamic> json) {
 
-    if (json['timeline'] != null) {
+    if (json != null) {
       timeline = new List<TimelineItem>();
-      json['timeline'].forEach((v) {
+      json.forEach((v) {
         timeline.add(new TimelineItem.fromJson(v));
       });
     }
