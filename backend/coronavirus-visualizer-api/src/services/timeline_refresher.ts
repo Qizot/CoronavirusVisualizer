@@ -16,6 +16,10 @@ export const refreshTimelinesJob = async () => {
             try {
                 const response = await fetch(url);
                 const body = await response.json();
+                if (response.status != 200) {
+                    console.log(body);
+                    continue;
+                }
                 const timeline = await VirusTimelineSchema.findOne({code: countries[key]});
                 if (timeline) {
 
