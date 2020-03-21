@@ -1,4 +1,5 @@
 import express from 'express';
+import logger from 'morgan';
 import { PORT } from './config/constants';
 import indexRouter from "./routes/index";
 import mongoose from 'mongoose';
@@ -7,12 +8,13 @@ import { refreshTimelinesJob } from './services/timeline_refresher';
 
 const app = express();
 app.use(express.json());
+app.use(express.json());
+app.use(logger("dev"));
 
 app.use("/api", indexRouter);
 
 const mongoUri = "mongodb://localhost/corona_visualizer";
 
-app.use(express.json());
 
 mongoose.connect(mongoUri, {
     useNewUrlParser: true,
@@ -25,6 +27,7 @@ mongoose.connect(mongoUri, {
   }
 });
 
+refreshTimelinesJob();
 // run cron job every full hour - refreshing timelines
 const job = new CronJob("0 * * * *", () => {
     refreshTimelinesJob();
