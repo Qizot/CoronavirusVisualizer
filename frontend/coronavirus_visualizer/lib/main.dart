@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() {
     BlocSupervisor.delegate = SimpleBlocDelegate();
     CountriesService();
-    ApiConfig(apiUrl: "http://192.168.0.105:4000/api");
+    ApiConfig(apiUrl: "http://46.101.198.229:8000/api");
     runApp(App());
 }
 
