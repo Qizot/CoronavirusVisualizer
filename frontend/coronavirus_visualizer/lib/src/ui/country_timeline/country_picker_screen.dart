@@ -36,23 +36,25 @@ class CountryPickerScreen extends StatelessWidget {
             ]
           )
         ),
-        child: ListView.builder(
-          itemCount: countries.length,
-          itemBuilder: (context, idx) {
-            return ListTile(
-              title: Row(
-                children: <Widget>[
-                  Text(countries[idx].name, style: TextStyle(fontFamily: "Baloo", fontSize: 15, color: Colors.white, fontWeight: FontWeight.w500)),
-                  SizedBox(width: 6),
-                  Text(_countryEmoji(countries[idx].code), style: TextStyle(fontSize: 20))
-                ],
-              ),
-              onTap: () {
-                BlocProvider.of<TimelineBloc>(context).add(TimelineFetchCountryTimeline(countryCode: countries[idx].code));
-                Navigator.of(context).pushReplacementNamed('/country-timeline');
-              },
-            );
-          },
+        child: Scrollbar(
+          child: ListView.builder(
+            itemCount: countries.length,
+            itemBuilder: (context, idx) {
+              return ListTile(
+                title: Row(
+                  children: <Widget>[
+                    Text(countries[idx].name, style: TextStyle(fontFamily: "Baloo", fontSize: 15, color: Colors.white, fontWeight: FontWeight.w500)),
+                    SizedBox(width: 6),
+                    Text(_countryEmoji(countries[idx].code), style: TextStyle(fontSize: 20))
+                  ],
+                ),
+                onTap: () {
+                  BlocProvider.of<TimelineBloc>(context).add(TimelineFetchCountryTimeline(countryCode: countries[idx].code));
+                  Navigator.of(context).pushReplacementNamed('/country-timeline');
+                },
+              );
+            },
+          ),
         ),
       )
     );
