@@ -50,10 +50,11 @@ class TotalTimelineStats extends StatelessWidget {
             shrinkWrap: true,
             crossAxisCount: 2,
             children: <Widget>[
+              // new cases and new deaths are only submitted a day before
               _info("Total cases", timeline.first.totalCases),
-              _info("New cases", timeline.first.newCases),
+              _info("New cases", timeline[1].newCases),
               _info("Total deaths", timeline.first.totalDeaths),
-              _info("New deaths", timeline.first.newDeaths),
+              _info("New deaths", timeline[1].newDeaths),
               _info("Total recovered", timeline.first.totalRecovered),
 
             ],
