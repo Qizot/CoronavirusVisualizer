@@ -6,6 +6,8 @@
   "scripts": {
     "start:dev": "nodemon dist/index.js",
     "build:dev": "tsc --watch --preserveWatchOutput",
+    "build:prod": "tsc",
+    "start:prod": "node dist/index.js",
     "dev": "concurrently \"npm:build:dev\" \"npm:start:dev\""
   },
   "keywords": [],

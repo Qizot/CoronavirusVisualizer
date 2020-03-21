@@ -1,6 +1,6 @@
 import express from 'express';
 import logger from 'morgan';
-import { PORT } from './config/constants';
+import { PORT, MONGO_DB, HOST } from './config/constants';
 import indexRouter from "./routes/index";
 import mongoose from 'mongoose';
 import {CronJob} from "cron";
@@ -13,7 +13,7 @@ app.use(logger("dev"));
 
 app.use("/api", indexRouter);
 
-const mongoUri = "mongodb://localhost/corona_visualizer";
+const mongoUri = `mongodb://${MONGO_DB}/corona_visualizer`;
 
 
 mongoose.connect(mongoUri, {
@@ -24,10 +24,10 @@ mongoose.connect(mongoUri, {
     console.log("MongoDB: ", err);
   } else {
     console.log("Connected to MongoDb");
+  refreshTimelinesJob();
   }
 });
 
-refreshTimelinesJob();
 // run cron job every full hour - refreshing timelines
 const job = new CronJob("0 * * * *", () => {
     refreshTimelinesJob();
@@ -36,6 +36,6 @@ const job = new CronJob("0 * * * *", () => {
 job.start();
 
 app.listen(PORT, () => {
-    console.log(`Server is listening on port ${PORT}`);
+    console.log(`Server is listening on port${PORT}`);
 });
 

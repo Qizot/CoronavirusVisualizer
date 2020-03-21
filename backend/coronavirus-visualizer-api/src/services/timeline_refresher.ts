@@ -1,5 +1,6 @@
 import fetch from "node-fetch";
 import { VirusTimelineType, VirusTimelineSchema } from "../models/timeline";
+import { VIRUS_DATA_API } from "../config/constants";
 
 
 
@@ -11,7 +12,7 @@ export const refreshTimelinesJob = async () => {
 
     for (let key in countries) {
         for (let api of APIS) {
-            const url = `http://127.0.0.1:5000/api/timelines/${countries[key]}?api=${api}`;
+            const url = `http://${VIRUS_DATA_API}/api/timelines/${countries[key]}?api=${api}`;
             try {
                 const response = await fetch(url);
                 const body = await response.json();
@@ -32,7 +33,7 @@ export const refreshTimelinesJob = async () => {
                 break;
 
             } catch (err) {
-                console.log("error while updating timeline");
+                console.log("error while updating timeline", err);
             }
 
 
