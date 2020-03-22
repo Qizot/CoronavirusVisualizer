@@ -12,23 +12,17 @@ abstract class TimelineState extends Equatable {
 
 class TimelineUninitialized extends TimelineState {
   @override
-  String toString() {
-    return 'TImelineUninitialized { }';
-  }
+  String toString() => 'TImelineUninitialized { }';
 }
 
 class TimelineLoading extends TimelineState {
   @override
-  String toString() {
-    return 'TimelineLoading { }';
-  }
+  String toString() => 'TimelineLoading { }';
 }
 
 class TimelineInitialized extends TimelineState {
   @override
-  String toString() {
-    return 'TimelineInitialized { }';
-  }
+  String toString() => 'TimelineInitialized { }';
 }
 
 class TimelineError extends TimelineState {
@@ -40,9 +34,7 @@ class TimelineError extends TimelineState {
   List<Object> get props => [error];
 
   @override
-  String toString() {
-    return 'TimelineError { error: $error }';
-  }
+  String toString() => 'TimelineError { error: $error }';
 }
 
 class TimelineFetchedGlobalTimeline extends TimelineState {
@@ -54,9 +46,7 @@ class TimelineFetchedGlobalTimeline extends TimelineState {
   List<Object> get props => [globalTimeline];
 
   @override
-  String toString() {
-    return 'TimelineFetchedGlobalTimeline { globalTimeline: $globalTimeline }';
-  }
+  String toString() => 'TimelineFetchedGlobalTimeline { globalTimeline: $globalTimeline }';
 }
 
 class TimelineFetchedCountryTimeline extends TimelineState {
@@ -68,8 +58,5 @@ class TimelineFetchedCountryTimeline extends TimelineState {
   List<Object> get props => [countryTimeline];
 
   @override
-  String toString() {
-    return 'TimelineFetchedCountryTimeline { countryTimeline: $countryTimeline }';
-  }
-
+  String toString() => 'TimelineFetchedCountryTimeline { countryTimeline: $countryTimeline }';
 }

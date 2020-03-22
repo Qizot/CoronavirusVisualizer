@@ -1,11 +1,28 @@
-
-
+import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-class Country {
+class Country extends Equatable {
   final String name;
   final String code;
+
+  @override
+  List get props => [name, code];
+
   Country({@required this.name, @required this.code});
+
+  Country.fromJson(Map<String, dynamic> json): name = json['name'], code = json['code'];
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['name'] = this.name;
+    data['code'] = this.code;
+    return data;
+  }
+
+  @override
+  String toString() {
+    return 'Country { name: $name, code: $code }';
+  }
 }
 
 class CountriesService {

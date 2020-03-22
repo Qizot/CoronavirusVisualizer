@@ -1,5 +1,6 @@
 
 
+import 'package:coronavirus_visualizer/src/bloc/saved_countries/bloc.dart';
 import 'package:coronavirus_visualizer/src/bloc/timeline_bloc/bloc.dart';
 import 'package:coronavirus_visualizer/src/ui/country_timeline/country_picker_screen.dart';
 import 'package:coronavirus_visualizer/src/ui/country_timeline/country_timeline_screen.dart';
@@ -16,10 +17,18 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<TimelineBloc>(
-      create: (context) => TimelineBloc()
-        ..add(TimelineInitialize()),
-      child: MaterialApp(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<TimelineBloc>(
+          create: (context) => TimelineBloc()
+            ..add(TimelineInitialize()),
+        ),
+        BlocProvider<SavedCountriesBloc>(
+          create: (context) => SavedCountriesBloc()
+            ..add(SavedCountriesFetch()),
+        )
+      ],
+      child:MaterialApp(
         theme: ThemeData(
             brightness: Brightness.dark,
         ),

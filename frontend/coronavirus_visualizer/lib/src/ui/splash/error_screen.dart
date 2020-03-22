@@ -30,7 +30,7 @@ class _ErrorScreenState extends State<ErrorScreen> with TickerProviderStateMixin
     _color = ColorTween(begin: Colors.white, end: Colors.red).animate(_sizeCurve);
 
     final _rotationCurve = CurvedAnimation(curve: Curves.bounceInOut, parent: _shakeController);
-    _roatation = Tween<double>(begin: -math.pi/12, end: math.pi/12).animate(_shakeController);
+    _roatation = Tween<double>(begin: -math.pi/12, end: math.pi/12).animate(_rotationCurve);
 
     _resizeController.forward();
     _shakeController.forward();
