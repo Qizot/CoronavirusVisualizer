@@ -3,7 +3,6 @@
 import 'package:coronavirus_visualizer/src/models/timeline_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:meta/meta.dart';
 
 class TotalTimelineStats extends StatelessWidget {
@@ -51,11 +50,11 @@ class TotalTimelineStats extends StatelessWidget {
             crossAxisCount: 2,
             children: <Widget>[
               // new cases and new deaths are only submitted a day before
-              _info("Total cases", timeline.first.totalCases),
-              _info("New cases", timeline[1].newCases),
-              _info("Total deaths", timeline.first.totalDeaths),
-              _info("New deaths", timeline[1].newDeaths),
-              _info("Total recovered", timeline.first.totalRecovered),
+              _info("Total cases", timeline.first.totalCases ?? 0),
+              _info("New cases", timeline[1].newCases ?? 0),
+              _info("Total deaths", timeline.first.totalDeaths ?? 0),
+              _info("New deaths", timeline[1].newDeaths ?? 0),
+              _info("Total recovered", timeline.first.totalRecovered ?? 0),
 
             ],
           )

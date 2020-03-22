@@ -10,9 +10,7 @@ abstract class TimelineEvent extends Equatable {
 
 class TimelineInitialize extends TimelineEvent {
   @override
-  String toString() {
-    return 'TimelineInitialize { }';
-  }
+  String toString() => 'TimelineInitialize { }';
 }
 
 class TimelineFetchTimeline extends TimelineEvent {
@@ -25,9 +23,7 @@ class TimelineFetchTimeline extends TimelineEvent {
   List<Object> get props => [dateFrom, dateTo];
 
   @override
-  String toString() {
-    return 'TimelineFetchTimeline { dateFrom: $dateFrom, dateTo: $dateTo }';
-  }
+  String toString() => 'TimelineFetchTimeline { dateFrom: $dateFrom, dateTo: $dateTo }';
 }
 
 class TimelineFetchCountryTimeline extends TimelineEvent {
@@ -41,7 +37,5 @@ class TimelineFetchCountryTimeline extends TimelineEvent {
   List<Object> get props => [countryCode, dateFrom, dateTo];
 
   @override
-  String toString() {
-    return 'TimelineFetchCountryTimeline { countryCode: $countryCode, dateFrom: $dateFrom, dateTo: $dateTo }';
-  }
+  String toString() => 'TimelineFetchCountryTimeline { countryCode: $countryCode, dateFrom: $dateFrom, dateTo: $dateTo }';
 }

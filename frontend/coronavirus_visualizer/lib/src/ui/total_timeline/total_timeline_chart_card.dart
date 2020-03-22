@@ -48,6 +48,6 @@ class TotalTimelineChartCard extends StatelessWidget {
           )
         ],
       )
-    );;
+    );
   }
 }

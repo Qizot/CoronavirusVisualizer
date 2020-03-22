@@ -26,9 +26,9 @@ class TimelineBloc extends Bloc<TimelineEvent, TimelineState> {
         final globalTimeline = await _repository.getGlobalTimeline();
         await showLoadingScreen;
         yield TimelineFetchedGlobalTimeline(globalTimeline: globalTimeline);
-      } on DioError catch (e) {
+      } on DioError {
         yield TimelineError(error: "Error has occured while communicating with backend!");
-      } catch (e) {
+      } on Exception {
         yield TimelineError(error: "Unknown error has occured, try again later!");
       }
     }
@@ -40,9 +40,9 @@ class TimelineBloc extends Bloc<TimelineEvent, TimelineState> {
         final countryTimeline = await _repository.getCountryTimeline(event.countryCode);
         await showLoadingScreen;
         yield TimelineFetchedCountryTimeline(countryTimeline: countryTimeline);
-      } on DioError catch (e) {
+      } on DioError {
         yield TimelineError(error: "Error has occured while communicating with backend!");
-      } catch (e) {
+      } on Exception {
         yield TimelineError(error: "Unknown error has occured, try again later!");
       }
 
