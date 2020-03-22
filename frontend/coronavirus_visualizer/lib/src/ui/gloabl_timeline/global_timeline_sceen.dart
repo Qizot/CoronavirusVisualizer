@@ -29,7 +29,7 @@ class _GlobalTimelineScreenState extends State<GlobalTimelineScreen> {
         title: Text(appTitle, style: TextStyle(fontFamily: "Baloo", fontSize: 20)),
         centerTitle: true,
       ): null,
-      body: BlocListener<TimelineBloc, TimelineState>(
+      body: BlocConsumer<TimelineBloc, TimelineState>(
         listener: (context, state) {
           if (state is TimelineFetchedGlobalTimeline) {
             setState(() {
@@ -37,8 +37,7 @@ class _GlobalTimelineScreenState extends State<GlobalTimelineScreen> {
             });
           }
         },
-        child: BlocBuilder<TimelineBloc, TimelineState>(
-          builder: (context, state) {
+        builder: (context, state) {
             if (state is TimelineLoading) {
               return LoadingScreen(title: "Loading global timeline...");
             }
@@ -50,7 +49,6 @@ class _GlobalTimelineScreenState extends State<GlobalTimelineScreen> {
             }
             return Container();
           }
-        ),
       )
     );
   }

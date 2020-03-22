@@ -16,8 +16,6 @@ class SavedCountriesList extends StatefulWidget {
 
 class _SavedCountriesListState extends State<SavedCountriesList> {
 
-  List<Country> _countries = [];
-
   @override
   void initState() {
     BlocProvider.of<SavedCountriesBloc>(context).add(SavedCountriesFetch());
@@ -26,32 +24,38 @@ class _SavedCountriesListState extends State<SavedCountriesList> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<SavedCountriesBloc, SavedCountriesState>(
+    return BlocConsumer<SavedCountriesBloc, SavedCountriesState>(
       listener: (_, state) {
-        if (state is SavedCountriesFetched) {
-          setState(() {
-            _countries = state.countries ?? [];
-            print(_countries.length);
-          });
-        }
+        // pass
       },
-      child: Scrollbar(
-        child: ListView.builder(
-          itemCount: _countries.length,
-          itemBuilder: (context, idx) {
-            return CountrySlidable(
-              country: _countries[idx],
-              action: IconSlideAction(
-                caption: "Remove",
-                color: Colors.red,
-                icon: Icons.delete,
-                onTap: () => BlocProvider.of<SavedCountriesBloc>(context)
-                  .add(SavedCountriesRemoveCountry(country: _countries[idx]))
-              ) 
-            );
-          },
-        ),
-      )
+      buildWhen: (prev, curr) {
+        if (prev is SavedCountriesFetched && !(curr is SavedCountriesFetched))
+          return false;
+        return true;
+      },
+      builder: (context, state) {
+        List<Country> countries = [];
+        if (state is SavedCountriesFetched) {
+          countries = state.countries;
+        }
+        return Scrollbar(
+          child: ListView.builder(
+            itemCount: countries.length,
+            itemBuilder: (context, idx) {
+              return CountrySlidable(
+                country: countries[idx],
+                action: IconSlideAction(
+                  caption: "Remove",
+                  color: Colors.red,
+                  icon: Icons.delete,
+                  onTap: () => BlocProvider.of<SavedCountriesBloc>(context)
+                    .add(SavedCountriesRemoveCountry(country: countries[idx]))
+                ) 
+              );
+            },
+          ),
+        );
+      }
     );
   }
 }

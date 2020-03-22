@@ -1,6 +1,3 @@
-
-
-import 'package:coronavirus_visualizer/src/bloc/saved_countries/bloc.dart';
 import 'package:coronavirus_visualizer/src/bloc/timeline_bloc/bloc.dart';
 import 'package:coronavirus_visualizer/src/services/countries.dart';
 import 'package:flutter/material.dart';

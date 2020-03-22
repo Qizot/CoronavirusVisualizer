@@ -32,7 +32,7 @@ class _CountryTimelineScreenState extends State<CountryTimelineScreen> {
         title: Text(appTitle, style: TextStyle(fontFamily: "Baloo", fontSize: 25)),
         centerTitle: true,
       ) : null,
-      body: BlocListener<TimelineBloc, TimelineState>(
+      body: BlocConsumer<TimelineBloc, TimelineState>(
         listener: (context, state) {
           if (state is TimelineFetchedCountryTimeline) {
             setState(() {
@@ -40,8 +40,7 @@ class _CountryTimelineScreenState extends State<CountryTimelineScreen> {
             });
           }
         },
-        child: BlocBuilder<TimelineBloc, TimelineState>(
-          builder: (context, state) {
+        builder: (context, state) {
             if (state is TimelineLoading) {
               return LoadingScreen(title: "Loading timeline...");
             }
@@ -61,7 +60,6 @@ class _CountryTimelineScreenState extends State<CountryTimelineScreen> {
             }
             return Center(child: Text("Nothing"));
           }
-        ),
       )
     );
   }
