@@ -13,8 +13,13 @@ class TheVirusTrackerProvider(Provider):
     def fetch_country_timeline(cls, country_code):
         try:
             result = {}
+            headers = {
+                "User-Agent" : "Mozilla/5.0 (Windows NT x.y; rv:10.0) Gecko/20100101 Firefox/10.0",
+                'Accept-Encoding': 'identity'
+            }
+
             req = requests.get(TheVirusTrackerProvider.COUNTRY_TIMELINE_URL.format(country_code),
-                               timeout=TheVirusTrackerProvider.DEFAULT_TIMEOUT, headers={'Accept-Encoding': 'identity'})
+                               timeout=TheVirusTrackerProvider.DEFAULT_TIMEOUT, headers=headers)
             data = json.loads(req.text)
             info = data['countrytimelinedata'][0]['info']
             result['country'] = info['title']
