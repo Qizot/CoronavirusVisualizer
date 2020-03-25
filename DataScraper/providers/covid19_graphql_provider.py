@@ -22,7 +22,7 @@ class Covid19GraphqlProvider(Provider):
 
     @classmethod
     def fetch_country_timeline(cls, country_code):
-        country = Provider.get_country_by_code(country_code)
+        country = Provider.get_country_by_code(country_code, type="graphql")
         endpoint = HTTPEndpoint(Covid19GraphqlProvider.API_ENDPOINT, {})
 
         variables = {
@@ -55,12 +55,18 @@ class Covid19GraphqlProvider(Provider):
             timeline.append({
                 "date": date,
                 "new_cases": new_cases,
-                "new_deaths": new_deaths,
+                "new_deaths": new_deaths or 0,
                 "total_cases": total_cases,
                 "total_recovered": total_recovered,
                 "total_deaths": total_deaths
             })
         results['timeline'] = timeline
+
+        for (idx, item) in reversed(list(enumerate(results['timeline']))):
+            if idx - 1 >= 0:
+                item['new_deaths'] = item['total_deaths'] - results['timeline'][idx-1]['total_deaths']
+                item['total_recovered'] = item['total_recovered'] or results['timeline'][idx-1]['total_recovered']
+
         return results
 
 
