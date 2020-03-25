@@ -8,7 +8,7 @@ import { VIRUS_DATA_API } from "../config/constants";
 
 export const refreshTimelinesJob = async () => {
     console.log("Refreshing timelines...")
-    const APIS = ["thevirustracker", "graphql"];
+    const APIS = ["graphql", "thevirustracker"];
 
     for (let key in countries) {
         for (let api of APIS) {
@@ -17,7 +17,6 @@ export const refreshTimelinesJob = async () => {
                 const response = await fetch(url);
                 const body = await response.json();
                 if (response.status != 200) {
-                    console.log(body);
                     continue;
                 }
                 const timeline = await VirusTimelineSchema.findOne({code: countries[key]});
