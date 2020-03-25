@@ -26,6 +26,7 @@ class TheVirusTrackerProvider(Provider):
             result['code'] = info['code']
 
             timeline = []
+            today_date = datetime.now().date()
             date_format = "%m/%d/%Y"
             for (date_str, cases) in data['timelineitems'][0].items():
                 # me might encounter non-date entry so just let it fail and continue
@@ -37,6 +38,8 @@ class TheVirusTrackerProvider(Provider):
                     total_recovered = cases['total_recoveries']
                     total_deaths = cases['total_deaths']
 
+                    if date.date() == today_date:
+                        continue
                     timeline.append({
                         "date": date,
                         "new_cases": new_cases,

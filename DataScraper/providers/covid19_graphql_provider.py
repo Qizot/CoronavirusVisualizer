@@ -40,6 +40,8 @@ class Covid19GraphqlProvider(Provider):
         }
 
         timeline = []
+        today_date = datetime.now().date()
+
         for result in data['data']['results']:
             date_format = "%Y-%m-%d"
             date = datetime.strptime(result['date'], date_format)
@@ -51,7 +53,9 @@ class Covid19GraphqlProvider(Provider):
             growth = float(rate) if rate else 0
             new_cases = math.ceil(total_cases - total_cases / (1 + growth)) if growth > 0 else 0
             new_deaths = None
-
+            
+            if date.date() == today_date:
+                continue
             timeline.append({
                 "date": date,
                 "new_cases": new_cases,
