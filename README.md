@@ -18,7 +18,7 @@ We decided to obtain virus's data from two public APIs which then we parse into 
  REST api with daily updates of new cases/deaths/recoveries, unfortunately it is quite often down 
  which caused lot of problems recently
  
- - [Covid19 graphql](https://covid19-graphql.now.sh) a public Graphql api which gathers it's data one public 
+ - [Covid19 graphql](https://covid19-graphql.now.sh) a public Graphql api which gathers it's data from one public 
  github repostitory that is being updated on daily basis, it turned out to be more reliable but this time 
  we can only depend on data 
  from previous day so it's far from real time
