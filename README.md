@@ -42,7 +42,12 @@ an average app user might want to spend on waiting. Moreover, we value our provi
 than we actually need. Instead we just keep refreshing our database every hour in case new data might come in.
 
 #### Architecture
-In MongoDB we keep a single collection which keeps record in [given format](https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/coronavirus-visualizer-api/src/models/timeline.ts)
+In MongoDB we keep a single collection which keeps records in [given format](https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/coronavirus-visualizer-api/src/models/timeline.ts).
+Our backend exposes 3 different endpoints, you can learn about all of them by inspecting our codebase.
+On every request we perform particular query on database, mainly consisting of aggregate pipeline and return obtained data
+back to the user.
 
-#### Frontend demo
-// TODO
+## Frontend demo
+**You can download an app [here](https://github.com/Qizot/CoronavirusVisualizer/releases/tag/v1.1) (not available on google play yet).**
+
+<img src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/virus_app.gif" height="500" width="250">
