@@ -37,8 +37,8 @@ As previously mentioned, we use MongoDB document database. It was an easy choice
 which saves us headaches from parsing data back to jason format and above that mongoose library is straightforward 
 to use and we value simplicity a lot.
 
-Why use database as we can depend on our proxy server you might ask? Well, pasing all countries data takes much longer than
-an average app user might want to spend on waiting. Moreover, we value our providers and we don't want to take more their bandwith
+Why use database as we can depend on our proxy server you might ask? Well, parsing all countries data takes much longer than
+an average app user might want to spend on waiting. Moreover, we value our providers and we don't want to take more of their bandwitdh
 than we actually need. Instead we just keep refreshing our database every hour in case new data might come in.
 
 #### Architecture
