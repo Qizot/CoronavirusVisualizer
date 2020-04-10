@@ -31,6 +31,10 @@ class TheVirusTrackerProvider(Provider):
             for (date_str, cases) in data['timelineitems'][0].items():
                 # me might encounter non-date entry so just let it fail and continue
                 try:
+                    month, day, year = date_str.split("/")
+                    year = "20" + year if len(year) == 2 else year
+                    date_str = f"{month.zfill(2)}/{day.zfill(2)}/{year}"
+
                     date = datetime.strptime(date_str, date_format)
                     new_cases = cases['new_daily_cases']
                     new_deaths = cases['new_daily_deaths']
