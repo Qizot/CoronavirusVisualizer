@@ -52,7 +52,6 @@ class ApiTimelineProvider extends TimelineProvider {
     if ((response.data as List).length != 1) {
       throw Exception("Expected single element list");
     }
-    print("got here");
     return CountryTimeline.fromJson(response.data[0]);
   }
 
