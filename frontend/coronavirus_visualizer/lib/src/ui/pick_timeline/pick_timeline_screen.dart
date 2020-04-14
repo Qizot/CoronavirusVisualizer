@@ -8,11 +8,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class PickTimelineScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
     return Scaffold(
       backgroundColor: Color(0xFF1b1a1a),
       body: Center(
-        child: Column(
+        child: Flex(
           mainAxisAlignment: MainAxisAlignment.center,
+          direction: isPortrait ? Axis.vertical : Axis.horizontal,
           children: <Widget>[
             _pickTimeline(title: "Global timeline", imageName: "assets/globe.png", onTap: () {
               BlocProvider.of<TimelineBloc>(context).add(TimelineFetchTimeline());
@@ -60,6 +62,7 @@ class PickTimelineScreen extends StatelessWidget {
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(imageName, width: 150, height: 150),
             SizedBox(height: 10),

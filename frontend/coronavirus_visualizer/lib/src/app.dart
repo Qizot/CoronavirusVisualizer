@@ -31,6 +31,7 @@ class App extends StatelessWidget {
       child:MaterialApp(
         theme: ThemeData(
             brightness: Brightness.dark,
+            accentColor: Colors.black
         ),
         routes: {
           "/": (context) => SplashScreen(),
