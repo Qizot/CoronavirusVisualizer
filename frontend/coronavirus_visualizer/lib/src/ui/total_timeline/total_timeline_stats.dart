@@ -48,6 +48,7 @@ class TotalTimelineStats extends StatelessWidget {
             physics: ScrollPhysics(),
             shrinkWrap: true,
             crossAxisCount: 2,
+            childAspectRatio: 1.8,
             children: <Widget>[
               // new cases and new deaths are only submitted a day before
               _info("Total cases", timeline.first.totalCases ?? 0),
@@ -64,15 +65,13 @@ class TotalTimelineStats extends StatelessWidget {
   }
 
   Widget _info(String text, int amount) {
-    return Container(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Text(text, style: TextStyle(fontFamily: "Baloo", fontSize: 20, color: Colors.white, fontWeight: FontWeight.w500)),
-          SizedBox(height: 10),
-          Text(amount.toString(), style: TextStyle(fontFamily: "Baloo", fontSize: 25, color: Colors.white, fontWeight: FontWeight.w700))
-        ],
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Text(text, style: TextStyle(fontFamily: "Baloo", fontSize: 20, color: Colors.white, fontWeight: FontWeight.w500)),
+        SizedBox(height: 10),
+        Text(amount.toString(), style: TextStyle(fontFamily: "Baloo", fontSize: 25, color: Colors.white, fontWeight: FontWeight.w700))
+      ],
     );
   }
 

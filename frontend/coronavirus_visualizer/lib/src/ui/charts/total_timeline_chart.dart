@@ -58,15 +58,9 @@ class TotalTimelineChart extends StatelessWidget {
     return charts.TimeSeriesChart(
       seriesList,
       animate: animate,
-      // Configure the default renderer as a line renderer. This will be used
-      // for any series that does not define a rendererIdKey.
-      //
-      // This is the default configuration, but is shown here for  illustration.
       defaultRenderer: charts.LineRendererConfig(),
-      // Custom renderer configuration for the point series.
       customSeriesRenderers: [
         charts.PointRendererConfig(
-            // ID used to link series to this renderer.
             customRendererId: 'customPoint')
       ],
       selectionModels: [
@@ -75,9 +69,6 @@ class TotalTimelineChart extends StatelessWidget {
           changedListener: _onSelectionChanged(context),
         )
       ],
-      // Optionally pass in a [DateTimeFactory] used by the chart. The factory
-      // should create the same type of [DateTime] as the data provided. If none
-      // specified, the default creates local date time.
       dateTimeFactory: const charts.LocalDateTimeFactory(),
     );
   }

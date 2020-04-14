@@ -5,6 +5,7 @@ import 'package:coronavirus_visualizer/src/bloc/timeline_bloc/bloc.dart';
 import 'package:coronavirus_visualizer/src/models/global_timeline.dart';
 import 'package:coronavirus_visualizer/src/ui/splash/error_screen.dart';
 import 'package:coronavirus_visualizer/src/ui/splash/loading_screen.dart';
+import 'package:coronavirus_visualizer/src/ui/total_timeline/daily_cases_chart_card.dart';
 import 'package:coronavirus_visualizer/src/ui/total_timeline/total_timeline_chart_card.dart';
 import 'package:coronavirus_visualizer/src/ui/total_timeline/total_timeline_circle_chart_card.dart';
 import 'package:coronavirus_visualizer/src/ui/total_timeline/total_timeline_stats.dart';
@@ -57,6 +58,8 @@ class _GlobalTimelineScreenState extends State<GlobalTimelineScreen> {
     return ListView(
       children: <Widget>[
         TotalTimelineChartCard(timeline: globalTimeline.timeline),
+        SizedBox(height: 15),
+        DailyCasesChartCard(timeline: globalTimeline.timeline),
         SizedBox(height: 15),
         TotalTimelineCircleChartCard(timeline: globalTimeline.timeline),
         SizedBox(height: 15),
