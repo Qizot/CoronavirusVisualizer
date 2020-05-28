@@ -1,12 +1,12 @@
-# CoronavirusVisualizer
+# CoronavirusVisualizer :skull:
 
 *Project for 'Database systems' laboratory in AGH University of Science and Technology.*
 
-#### Team
+## Team  :punch:
  * [Jakub Perżyło](https://github.com/Qizot)
  * [Sebastian Kuśnierz](https://github.com/skusnierz)
  
-### About project
+## About project :question:
 The main goal was to get take on new database which in our case happened to be MongoDB. 
 Our personal goal was rather to create Android application which would enable looking up information about 
 Corona virus's timeline cases around the world by taking advantage of our backend system.
@@ -27,27 +27,14 @@ Due to small differences we decided to save data up to previous day so as both A
 *We've exposed python's Flask server to work as a proxy between our APIs 
 so that it can be extended with other providers more easily.*
 
-### Technology stack
- - Node.js with mongoose library to serve as our API server
- - Python Flask server exposed as proxy between data providers
- - Flutter framework for frontend application development
+## Technology stack :computer: 
+ - Node.js with mongoose library to serve as our API server, you can find more information about backend at the following [link](https://github.com/Qizot/CoronavirusVisualizer/tree/master/backend),
+ - Python Flask server exposed as proxy between data providers,
+ - Flutter framework for frontend application development, you can find more information about frontend at the following [link](https://github.com/Qizot/CoronavirusVisualizer/tree/master/frontend/coronavirus_visualizer).
  
-### Database
-As previously mentioned, we use MongoDB document database. It was an easy choice as we operate mainly on json structures
-which saves us headaches from parsing data back to jason format and above that mongoose library is straightforward 
-to use and we value simplicity a lot.
 
-Why use database as we can depend on our proxy server you might ask? Well, parsing all countries data takes much longer than
-an average app user might want to spend on waiting. Moreover, we value our providers and we don't want to take more of their bandwitdh
-than we actually need. Instead we just keep refreshing our database every hour in case new data might come in.
 
-#### Architecture
-In MongoDB we keep a single collection which keeps records in [given format](https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/coronavirus-visualizer-api/src/models/timeline.ts).
-Our backend exposes 3 different endpoints, you can learn about all of them by inspecting our codebase.
-On every request we perform particular query on database, mainly consisting of aggregate pipeline and return obtained data
-back to the user.
-
-## Frontend demo
+## Frontend demo :iphone:
 **You can download an app [here](https://github.com/Qizot/CoronavirusVisualizer/releases/tag/v1.1) (not available on google play yet).**
 
 <img src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/virus_app.gif" height="500" width="250">
