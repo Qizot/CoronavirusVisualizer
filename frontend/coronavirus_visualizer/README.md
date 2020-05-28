@@ -1,10 +1,8 @@
+[![](https://img.shields.io/badge/flutter-newest-green)](https://flutter.dev/)
+[![](https://img.shields.io/badge/flutter__bloc-3.2.0-green)](https://pub.dev/packages/flutter_bloc/versions/3.2.0)
+[![](https://img.shields.io/badge/dio-3.0.9-green)](https://pub.dev/packages/dio/versions/3.0.9)
+
 # Corona Timeline
-
-[![](https://img.shields.io/badge/flutter-newest-blue)](https://flutter.dev/)
-[![](https://img.shields.io/badge/flutter__bloc-3.2.0-blue)](https://pub.dev/packages/flutter_bloc/versions/3.2.0)
-[![](https://img.shields.io/badge/dio-3.0.9-blue)](https://pub.dev/packages/dio/versions/3.0.9)
-
-
 
 
 Mobile application for displaying covid-19 cases accordingly to specific country or globally. It utilizes single backend being present in current git repository.
