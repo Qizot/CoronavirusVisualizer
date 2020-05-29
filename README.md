@@ -29,7 +29,7 @@ so that it can be extended with other providers more easily.*
 
 ## Technology stack :computer: 
  - Node.js with mongoose library to serve as our API server, you can find more information about backend at the following [link](https://github.com/Qizot/CoronavirusVisualizer/tree/master/backend),
- - Python Flask server exposed as proxy between data providers,
+ - Python Flask server exposed as proxy between data providers, you can find more information about data providers at the following [link](https://github.com/Qizot/CoronavirusVisualizer/tree/master/DataScraper),
  - Flutter framework for frontend application development, you can find more information about frontend at the following [link](https://github.com/Qizot/CoronavirusVisualizer/tree/master/frontend/coronavirus_visualizer).
  
 
