@@ -205,6 +205,6 @@ The result of the above tests :
 
 ```
 
-<img align="center" height="300" width="800" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/number_of_users.png">
-<img align="center" height="300" width="800" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/response_times.png">
-<img align="center" height="300" width="800" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/total_requests_per_second.png">
+<img align="center" height="300" width="1000" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/number_of_users.png">
+<img align="center" height="300" width="1000" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/response_times.png">
+<img align="center" height="300" width="1000" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/total_requests_per_second.png">
