@@ -161,4 +161,6 @@ draw_char('/global-timeline', x, test(x, '/global-timeline', []))
 ```
 
 Test results are illustrated in the charts below :       
-<img align="center" src="...">
+<img align="center" height="400" width="600" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/test_global_timeline.png">
+<img align="center" height="400" width="600" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/test_summary.png">
+<img align="center" height="400" width="600" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/test_timelines.png">
