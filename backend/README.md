@@ -109,87 +109,57 @@ paths:
 
 ```
 ## Test :chart_with_upwards_trend:
-To test the efficiency of our backend and database, we are using code below.
-Our tests measure the database response time for different number of queries :
-```
-  [1, 2, 5, 10, 20, 30, 40, 50, 100, 200, 300, 500, 1000, 2000, 5000, 10000]
-```
-Tests were performed for each endpoint:
-```
-  '/summary/:PL',
-  '/timelines',
-  '/global-timeline'
-```
-```python
-import requests
-import time
-import matplotlib.pyplot as plt
+We decided to test our backend's performance be utilizing locust tool. The tests have been performed on a very simple VPS with a single core and 1GB of ram.
 
-api = 'http://0.0.0.0:4000/api/'
-
-
-def test(number_of_request, path, params):
-    res = []
-    for req in number_of_request:
-        start = time.time()
-        for _ in range(req):
-            requests.get(api + path, params=params)
-        end = time.time()
-        res.append(end - start)
-    return res
-
-
-def draw_char(label, x, y):
-    font = {'style': 'italic',
-            'weight': 'normal',
-            'size': 34}
-    plt.rc('font', **font)
-    fig = plt.figure(figsize=(20, 16))
-    plt.plot(x, y, linewidth=6)
-    fig.suptitle(label, fontsize=36, weight='bold')
-    plt.xlabel('number of request', fontsize=36, weight='bold')
-    plt.ylabel('time [s]', fontsize=36, weight='bold')
-    fig.savefig('test_{}.png'.format(label.split('/')[1]))
-    plt.show()
-
-
-x = [1, 2, 5, 10, 20, 30, 40, 50, 100, 200, 300, 500, 1000, 2000, 5000, 10000]
-params = {'countries': ['PL']}
-draw_char('/summary:PL', x, test(x, '/summary/:PL', []))
-draw_char('/timelines', x, test(x, '/timelines', params))
-draw_char('/global-timeline', x, test(x, '/global-timeline', []))
-```
-
-Test results are illustrated in the charts below :       
-<img align="center" height="400" width="600" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/test_global_timeline.png">
-<img align="center" height="400" width="600" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/test_summary.png">
-<img align="center" height="400" width="600" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/test_timelines.png">
-
-Analyzing the above tests, we came to the conclusion that these tests are useless. So we have written new tests using a specialized locust tool:
+Single user code can be seen below:
 
 ```python
-from locust import HttpUser, TaskSet, task
+from locust import HttpUser, task, between
+import datetime
+import random
+
+def get_random_date_range():
+    now = datetime.datetime.now()
+    date_from = now - datetime.timedelta(days=random.randint(1, 150))
+    date_to = min(date_from + datetime.timedelta(days=random.randint(1, 150)), now)
+
+    return date_from.date(), date_to.date()
 
 
-class MyTaskSet(TaskSet):
-    @task
-    def test_summary(self):
-        self.client.get('/summary/:PL')
+class CoronaUser(HttpUser):
 
-    @task
-    def test_timelines(self):
-        self.client.get('/timelines', params={'countries': ['PL']})
+    @task(10)
+    def global_timeline(self):
+        self.client.get("/global-timeline")
 
-    @task
-    def test_global_timelines(self):
-        self.client.get('/global-timeline')
+    @task(20)
+    def multiple_country_timeline(self):
+        countries = CoronaUser.COUNTRIES 
+        date_from, date_to = get_random_date_range()
+
+        params = {
+            "countries": ",".join(countries),
+            "date_from": date_from,
+            "date_to": date_to
+        }
+        self.client.get(f"/timelines", params=params)
 
 
-class WebUser(HttpUser):
-    host = "http://0.0.0.0:4000/api"
-    tasks = [MyTaskSet]
-    min_wait = 2 * 1000
-    max_wait = 6 * 1000
+    @task(10)
+    def single_country_timeline(self):
+        params = {
+            "countries": "PL",
+        }
+        self.client.get(f"/timelines", params=params)
+
+    @task(5)
+    def summary(self):
+        picked_country = random.choice(CoronaUser.COUNTRIES) 
+        self.client.get(f"/summary/{picked_country}")
+
+    wait_time = between(2, 5)
+
+    COUNTRIES = ["PL", "CA", "US", "IT", "CN", "GB"
 ```
 
 
