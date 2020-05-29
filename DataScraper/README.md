@@ -18,7 +18,7 @@ At the moment only two providers are available:
  - [The virus tracker](https://thevirustracker.com/api)
  - [Covid19 graphql](https://covid19-graphql.now.sh)
 
-To create your own provider you have to follow `Provider` class structure and implement `fetch_country_timeline` metod.
+To create your own provider you have to follow [`Provider`](https://github.com/Qizot/CoronavirusVisualizer/blob/1073158601c29f3ad8ce9112c2156b64eb1f4e43/DataScraper/providers/provider.py#L4) class structure and implement `fetch_country_timeline` metod.
 You should fetch the whole timeline of given country (it's quite optimal for most public API's, at least with those we are using).
 
 Make sure that resulting data looks like this:
@@ -50,4 +50,4 @@ Make sure that resulting data looks like this:
 ```
 
 ### Available countries
-You can chack available countries [here](here goes link)
+You can chack available countries [here](https://github.com/Qizot/CoronavirusVisualizer/blob/1073158601c29f3ad8ce9112c2156b64eb1f4e43/DataScraper/providers/provider.py#L25).
