@@ -14,7 +14,7 @@ paths:
       summary: Get list of timelines for specific countries.
       parameters:
         - in: query
-          name: countryCodes
+          name: countries
           schema:
             type: array
             items:
