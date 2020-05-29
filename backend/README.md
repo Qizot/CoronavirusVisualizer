@@ -6,7 +6,7 @@
 
 ## Database :floppy_disk:
 As previously mentioned, we use MongoDB document database. It was an easy choice as we operate mainly on json structures
-which saves us headaches from parsing data back to jason format and above that mongoose library is straightforward
+which saves us headaches from parsing data back to json format and above that mongoose library is straightforward
 to use and we value simplicity a lot.
 
 Why use database as we can depend on our proxy server you might ask? Well, parsing all countries data takes much longer than
@@ -16,7 +16,7 @@ than we actually need. Instead we just keep refreshing our database every hour i
 ## Architecture :computer:
 In MongoDB we keep a single collection which keeps records in [given format](https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/coronavirus-visualizer-api/src/models/timeline.ts):
 
-```json
+```
     {
         country: string;
         code: string;
@@ -41,7 +41,7 @@ info:
   title: CoronaVirusAPI
   description: API description in Markdown.
   version: 1.0.0
-host: api.example.com
+host: http://46.101.198.229:8000
 basePath: /api
 schemes:
   - https

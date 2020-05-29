@@ -3,7 +3,7 @@ info:
   title: CoronaVirusAPI
   description: API description in Markdown.
   version: 1.0.0
-host: api.example.com
+host: http://46.101.198.229:8000/
 basePath: /api
 schemes:
   - https
