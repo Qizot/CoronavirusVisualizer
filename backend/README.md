@@ -164,3 +164,47 @@ Test results are illustrated in the charts below :
 <img align="center" height="400" width="600" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/test_global_timeline.png">
 <img align="center" height="400" width="600" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/test_summary.png">
 <img align="center" height="400" width="600" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/test_timelines.png">
+
+Analyzing the above tests, we came to the conclusion that these tests are useless. So we have written new tests using a specialized locust tool:
+
+```python
+from locust import HttpUser, TaskSet, task
+
+
+class MyTaskSet(TaskSet):
+    @task
+    def test_summary(self):
+        self.client.get('/summary/:PL')
+
+    @task
+    def test_timelines(self):
+        self.client.get('/timelines', params={'countries': ['PL']})
+
+    @task
+    def test_global_timelines(self):
+        self.client.get('/global-timeline')
+
+
+class WebUser(HttpUser):
+    host = "http://0.0.0.0:4000/api"
+    tasks = [MyTaskSet]
+    min_wait = 2 * 1000
+    max_wait = 6 * 1000
+```
+
+
+The result of the above tests :
+
+```
+|Type|Name                       |Request Count|Failure Count|Median Response Time|Average Response Time|Min Response Time|Max Response Time|Average Content Size|Requests/s|Failures/s|50%|66%|75%|80%|90%|95%|98%|99%|99.9%|99.99%|99.999%|100%|
+|----|---------------------------|-------------|-------------|--------------------|---------------------|-----------------|-----------------|--------------------|----------|----------|---|---|---|---|---|---|---|---|-----|------|-------|----|
+|GET |/api/global-timeline       |950          |0            |70                  |69                   |37               |157              |21747               |2.46      |0.00      |70 |77 |80 |82 |92 |110|130|140|160  |160   |160    |160 |
+|GET |/api/summary/:PL           |1001         |0            |10                  |8                    |2                |39               |2                   |2.59      |0.00      |10 |12 |13 |13 |15 |16 |18 |19 |30   |39    |39     |39  |
+|GET |/api/timelines?countries=PL|934          |0            |15                  |13                   |3                |36               |20148               |2.42      |0.00      |15 |17 |18 |19 |21 |25 |29 |32 |36   |36    |36     |36  |
+|None|Aggregated                 |2885         |0            |15                  |30                   |2                |157              |13684               |7.47      |0.00      |15 |26 |51 |63 |78 |86 |100|120|150  |160   |160    |160 |
+
+```
+
+<img align="center" height="300" width="800" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/number_of_users.png">
+<img align="center" height="300" width="800" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/response_times.png">
+<img align="center" height="300" width="800" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/total_requests_per_second.png">
