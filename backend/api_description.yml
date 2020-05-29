@@ -1,0 +1,70 @@
+swagger: "2.0"
+info:
+  title: CoronaVirusAPI
+  description: API description in Markdown.
+  version: 1.0.0
+host: http://46.101.198.229:8000/
+basePath: /api
+schemes:
+  - https
+
+paths:
+  /timelines:
+    get:
+      summary: Get list of timelines for specific countries.
+      parameters:
+        - in: query
+          name: countryCodes
+          schema:
+            type: array
+            items:
+              type: string
+          required: true
+          description: The array of country code, for which a timelines will be returned.
+        - in: query
+          name: dateFrom
+          schema:
+            type: date
+          default: 1900-01-01
+          required: false
+        - in: query
+          name: dateTo
+          schema:
+            type: date
+          default: 2100-01-01
+          required: false
+      responses:
+        200:
+          description: OK
+        400:
+          description: Invalid date format, remove date query param or fix format
+        400:
+          description: Lacking 'countries' query field
+        500:
+          description: Internal server error
+        500:
+          description: Aggregation error
+
+  /global-timeline:
+    get:
+      summary: Get global timeline.
+      responses:
+        200:
+          description: OK
+        500:
+          description: Aggregation error
+
+  /summary/:countryCode:
+    get:
+      summary: Get the newest timeline for specific country.
+      parameters:
+        - in: path
+          name: countryCode
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+        500:
+          description: Aggregation error
