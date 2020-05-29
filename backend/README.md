@@ -32,7 +32,7 @@ In MongoDB we keep a single collection which keeps records in [given format](htt
 ```
 
 Our backend exposes 3 different endpoints, you can learn about all of them by inspecting code below, which was written using [swagger](https://swagger.io/).
-On every request we perform particular query on database, mainly consisting of aggregate pipeline and return obtained data
+On every request we perform particular query on database, mainly consisting of aggregate pipeline and then return fetched data
 back to the user.
 
 ```yaml
