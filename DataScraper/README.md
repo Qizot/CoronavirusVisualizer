@@ -1,11 +1,12 @@
-# Data Scraper
+[![](https://img.shields.io/badge/python-3.7-brightgreen)](https://pl.python.org/)
+# Data Scraper :page_facing_up:
 
 Simple flask application serving as a proxy server to multiple covid-19 cases providers.
 
 
 
 
-### Usage
+### Usage :rocket:
 You can either run docker container by creating new docker image with supplied `Dockerfile` or just run server from your terminal with:
 ```
 pip install -r requirements.txt
@@ -13,7 +14,7 @@ FLASK_APP=scraper flask run
 ```
 
 
-### Providers
+### Providers :fax:
 At the moment only two providers are available:
  - [The virus tracker](https://thevirustracker.com/api)
  - [Covid19 graphql](https://covid19-graphql.now.sh)
@@ -49,5 +50,5 @@ Make sure that resulting data looks like this:
 }
 ```
 
-### Available countries
+### Available countries :us:
 You can chack available countries [here](here goes link)
