@@ -166,7 +166,7 @@ class CoronaUser(HttpUser):
 The result of the above tests :
 
 ```
-|Type|Name|Request Count|Failure Count|Median Response Time|Average Response Time|Min Response Time|Max Response Time|Average Content Size|Requests/s|Failures/s|50%|66%|75%|80%|90%|95%|98% |99% |99.9%|99.99%|99.999%|100%|
+|Type|                                                                                        Name|Request Count|Failure Count|Median Response Time|Average Response Time|Min Response Time|Max Response Time|Average Content Size|Requests/s|Failures/s|50%|66%|75%|80%|90%|95%|98% |99% |99.9%|99.99%|99.999%|100%|
 |----|--------------------------------------------------------------------------------------------|-------------|-------------|--------------------|---------------------|-----------------|-----------------|--------------------|----------|----------|---|---|---|---|---|---|----|----|-----|------|-------|----|
 |GET |/api/global-timeline                                                                        |252          |7            |580                 |586                  |11               |1585             |21142               |4.96      |0.14      |580|700|760|790|900|990|1500|1600|1600 |1600  |1600   |1600|
 |GET |/api/summary/CA                                                                             |26           |0            |59                  |114                  |39               |516              |116                 |0.51      |0.00      |82 |110|130|150|240|310|520 |520 |520  |520   |520    |520 |
