@@ -44,4 +44,4 @@ class CoronaUser(HttpUser):
     wait_time = between(2, 5)
 
     COUNTRIES = ["PL", "CA", "US", "IT", "CN", "GB"]
-
+ 
