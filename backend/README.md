@@ -196,15 +196,21 @@ class WebUser(HttpUser):
 The result of the above tests :
 
 ```
-|Type|Name                       |Request Count|Failure Count|Median Response Time|Average Response Time|Min Response Time|Max Response Time|Average Content Size|Requests/s|Failures/s|50%|66%|75%|80%|90%|95%|98%|99%|99.9%|99.99%|99.999%|100%|
-|----|---------------------------|-------------|-------------|--------------------|---------------------|-----------------|-----------------|--------------------|----------|----------|---|---|---|---|---|---|---|---|-----|------|-------|----|
-|GET |/api/global-timeline       |950          |0            |70                  |69                   |37               |157              |21747               |2.46      |0.00      |70 |77 |80 |82 |92 |110|130|140|160  |160   |160    |160 |
-|GET |/api/summary/:PL           |1001         |0            |10                  |8                    |2                |39               |2                   |2.59      |0.00      |10 |12 |13 |13 |15 |16 |18 |19 |30   |39    |39     |39  |
-|GET |/api/timelines?countries=PL|934          |0            |15                  |13                   |3                |36               |20148               |2.42      |0.00      |15 |17 |18 |19 |21 |25 |29 |32 |36   |36    |36     |36  |
-|None|Aggregated                 |2885         |0            |15                  |30                   |2                |157              |13684               |7.47      |0.00      |15 |26 |51 |63 |78 |86 |100|120|150  |160   |160    |160 |
+|Type|Name|Request Count|Failure Count|Median Response Time|Average Response Time|Min Response Time|Max Response Time|Average Content Size|Requests/s|Failures/s|50%|66%|75%|80%|90%|95%|98% |99% |99.9%|99.99%|99.999%|100%|
+|----|--------------------------------------------------------------------------------------------|-------------|-------------|--------------------|---------------------|-----------------|-----------------|--------------------|----------|----------|---|---|---|---|---|---|----|----|-----|------|-------|----|
+|GET |/api/global-timeline                                                                        |252          |7            |580                 |586                  |11               |1585             |21142               |4.96      |0.14      |580|700|760|790|900|990|1500|1600|1600 |1600  |1600   |1600|
+|GET |/api/summary/CA                                                                             |26           |0            |59                  |114                  |39               |516              |116                 |0.51      |0.00      |82 |110|130|150|240|310|520 |520 |520  |520   |520    |520 |
+|GET |/api/summary/CN                                                                             |21           |2            |66                  |97                   |5                |331              |104                 |0.41      |0.04      |66 |74 |88 |140|250|290|330 |330 |330  |330   |330    |330 |
+|GET |/api/summary/GB                                                                             |22           |0            |76                  |114                  |35               |490              |124                 |0.43      |0.00      |76 |97 |140|190|210|250|490 |490 |490  |490   |490    |490 |
+|GET |/api/summary/IT                                                                             |26           |0            |74                  |116                  |36               |444              |117                 |0.51      |0.00      |76 |96 |110|170|290|320|440 |440 |440  |440   |440    |440 |
+|GET |/api/summary/PL                                                                             |24           |0            |64                  |139                  |35               |732              |116                 |0.47      |0.00      |72 |93 |160|170|380|530|730 |730 |730  |730   |730    |730 |
+|GET |/api/summary/US                                                                             |30           |0            |62                  |95                   |38               |663              |116                 |0.59      |0.00      |63 |72 |81 |89 |210|240|660 |660 |660  |660   |660    |660 |
+|GET |/api/timelines                                                                              |9            |9            |20                  |38                   |4                |148              |0                   |0.18      |0.18      |20 |26 |28 |82 |150|150|150 |150 |150  |150   |150    |150 |
+|GET |/api/timelines?countries=PL                                                                 |272          |0            |100                 |148                  |63               |740              |20148               |5.36      |0.00      |100|140|170|200|280|380|580 |710 |740  |740   |740    |740 |
+|GET |/api/timelines?countries=PL%2CCA%2CUS%2CIT%2CCN%2CGB&date_from=2019-12-31&date_to=2020-04-05|1            |0            |193                 |193                  |193              |193              |123977              |0.02      |0.00      |190|190|190|190|190|190|190 |190 |190  |190   |190    |190 |
 
 ```
 
-<img align="center" height="300" width="1000" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/number_of_users.png">
-<img align="center" height="300" width="1000" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/response_times.png">
-<img align="center" height="300" width="1000" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/total_requests_per_second.png">
+<img align="center" height="300" width="1000" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/users.png">
+<img align="center" height="300" width="1000" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/delay.png">
+<img align="center" height="300" width="1000" src="https://github.com/Qizot/CoronavirusVisualizer/blob/master/backend/test/rps.png">
