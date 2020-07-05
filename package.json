@@ -7,6 +7,7 @@
     "start:dev": "nodemon dist/index.js",
     "build:dev": "tsc --watch --preserveWatchOutput",
     "build:prod": "tsc",
+    "postinstall": "npm run build:prod",
     "start:prod": "node dist/index.js",
     "dev": "concurrently \"npm:build:dev\" \"npm:start:dev\"",
     "start": "ts-node src/index.ts"
