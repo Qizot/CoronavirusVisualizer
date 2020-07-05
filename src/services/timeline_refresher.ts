@@ -12,7 +12,7 @@ export const refreshTimelinesJob = async () => {
 
     for (let key in countries) {
         for (let api of APIS) {
-            const url = `http://${VIRUS_DATA_API}/api/timelines/${countries[key]}?api=${api}`;
+            const url = `${VIRUS_DATA_API}/api/timelines/${countries[key]}?api=${api}`;
             try {
                 const response = await fetch(url);
                 const body = await response.json();
