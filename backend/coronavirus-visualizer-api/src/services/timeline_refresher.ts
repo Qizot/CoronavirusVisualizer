@@ -36,7 +36,8 @@ export const refreshTimelinesJob = async () => {
                 break;
 
             } catch (err) {
-                console.log("error while updating timeline", err);
+                /* console.log("error while updating timeline", err); */
+		console.log("error while connecting with data api");
             }
 
 

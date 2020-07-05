@@ -24,6 +24,7 @@
     "mongoose": "^5.9.5",
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.0",
+    "server": "^1.0.29",
     "ts-node": "^8.10.2"
   },
   "devDependencies": {
