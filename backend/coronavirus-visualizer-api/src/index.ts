@@ -13,8 +13,7 @@ app.use(logger("dev"));
 
 app.use("/api", indexRouter);
 
-const mongoUri = `mongodb://${MONGO_DB}/corona_visualizer`;
-
+const mongoUri = MONGO_DB;
 
 mongoose.connect(mongoUri, {
     useNewUrlParser: true,
